@@ -1,0 +1,106 @@
+@use "sass:map";
+@use "src/assets/scss/theme" as *;
+@use "src/assets/scss/functions" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif !important;
+}
+    
+:focus-visible {
+    outline: none !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.mat-toolbar {
+    background: $white !important;
+}
+
+.avatar-icon {
+    @include box-view(flex, false, center);
+    &.mat-icon {
+        font-family: 'Inter', sans-serif;
+        @extend .f-16, .m-r-16;
+    }
+}
+
+@mixin avatar {
+    @include box-view(inline-flex, center, center);
+    background: $ghost;
+    color: $white;
+    border-radius: get_measurement(5);
+}
+
+.avatar-sm {
+    @include avatar;
+    width: get_size(8);
+    height: get_size(8);
+}
+
+.mat-progress-bar-fill::after {
+    background-color: $primary !important;
+}
+
+.mat-checkbox-ripple .mat-ripple-element,
+.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $primary !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: $primary !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: $primary !important;
+}
+// ------------------ theme buttons ---------------
+@mixin theme-button {
+    padding-left: get_size(4);
+    padding-right: get_size(4);
+    border-radius: get_size(21);
+    border: 1px solid $primary;
+    box-shadow: none !important;
+    position: relative;
+    @extend .f-14;
+}
+
+.primary-button {
+    @include theme-button;
+    background-color: $primary;
+    color: $white;
+}
+.default-button {
+    @include theme-button;
+    background-color: $white;
+    color: $primary;
+}
+
+// ----------------- *** -------------------
+
+table {
+    thead {
+        tr {
+            background: $primary !important;
+            th, td {
+                color: $white !important;
+            }
+        }
+        .mat-checkbox .mat-checkbox-background {
+            background-color: $white;
+        }
+    }
+    tr {
+        border: 1px solid add_transparency($black, "12");
+    }
+    .mat-column-action {
+        width: get_size(21);
+    }
+}

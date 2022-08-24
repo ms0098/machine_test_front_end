@@ -1,0 +1,17 @@
+
+ <div class="card border-0 p-3">
+    <div class="card-header bg-white p-0">
+        <div class="mb-0 primary-title py-2">Delete</div>
+    </div>
+    <div class="card-body px-0">
+        <div class="row align-items-center" *ngIf="data.flag === 'delete'">
+            <div class="col-12">
+                {{data.msg}}
+            </div>
+            <div class="col-12 text-end">
+                <button class="btn default-button" (click)="dismissBox(false)">No</button>
+                <button class="btn primary-button ms-3" (click)="dismissBox(true)">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
