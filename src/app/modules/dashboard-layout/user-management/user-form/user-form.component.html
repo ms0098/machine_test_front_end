@@ -1,0 +1,82 @@
+<div class="card border-0 p-3">
+  <div class="card-header bg-white p-0">
+    <div class="mb-0 primary-title py-2">Edit User</div>
+  </div>
+  <div class="card-body px-0">
+    <div class="row align-items-center">
+      <form
+        role="form"
+        [formGroup]="user_form"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="name"
+              placeholder=""
+            />
+            <mat-error *ngIf=" !user_form.controls['name'].valid && user_form.controls['name'].touched">
+              <div *ngIf="user_form.controls['name'].errors.required">
+                * Full name is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder=""
+            />
+            <mat-error *ngIf="!user_form.controls['email'].valid && user_form.controls['email'].touched">
+              <div *ngIf="user_form.controls['email'].errors.required">
+                * Email is required
+              </div>
+              <div *ngIf="user_form.controls['email'].errors.email">
+                * Must be a valid email address
+              </div>
+            </mat-error>
+          </mat-form-field>
+          <div class="w-100 d-flex mb-4">
+            <div class="me-3">Gender</div>
+            <mat-radio-group formControlName="gender">
+            <mat-radio-button [value]="1" class="me-3">Male</mat-radio-button>
+            <mat-radio-button [value]="2" class="me-3">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [max]="maxDate" [matDatepicker]="picker" formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf=" !user_form.controls['dob'].valid && user_form.controls['dob'].touched">
+              <div *ngIf="user_form.controls['dob'].errors.required">
+                * Date is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Address</mat-label>
+            <textarea
+              matInput
+              formControlName="address"
+              placeholder=""
+            ></textarea>
+            <mat-error *ngIf=" !user_form.controls['address'].valid && user_form.controls['address'].touched">
+              <div *ngIf="user_form.controls['address'].errors.required">
+                * Address is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn primary-button">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
